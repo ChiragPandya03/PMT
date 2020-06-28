@@ -1,0 +1,157 @@
+﻿@model BaseModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
+    <title>@ViewData["Title"] - IlndOnline</title>
+    <link href="https://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="Stylesheet"></link>
+    @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />*@
+    @*<link rel="stylesheet" href="~/css/site.css" />*@
+
+
+    <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,700,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/flexslider.css">
+    <link rel="stylesheet" href="~/css/fonticon.css">
+
+    <link rel="stylesheet" href="~/css/style.css">
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script type="text/javascript" src="~/js/jquery.js"></script>
+
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="~/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/js/jquery.flexslider.js"></script>
+    <script type="text/javascript" src="~/js/general.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.flexslider').flexslider({
+                animation: "slide",
+                controlNav: false
+            });
+            $('#productName').val('');
+            $('#productName').autocomplete({
+                    source: '@Url.Page("index", "search")',
+                select: function (event, ui) {
+                    if (ui.item) {
+                        $("#SubLevelSearchID").val(ui.item.value);
+                        //$("#formtest").submit();
+                        }
+                    }
+            });
+            @*$('#productName').autocomplete({
+                    source: '@Url.Page("indexsearch", "search")',
+                select: function (event, ui) {
+                    if (ui.item) {
+                        $("#SubLevelSearchID").val(ui.item.value);
+                        }
+                    }
+            });*@
+
+            });
+
+
+    </script>
+    @RenderSection("Scripts", required: false)
+
+</head>
+
+<body>
+    <header>
+        <div class="wrapper clearfix">
+            <div class="logoSection pull-left">
+                <a asp-area="" asp-page="/Index" title="Home"><img src="../img/logo.png" alt="logo" width="130"></a>
+            </div>
+
+            <a href="javascript:void(0)" class="icon icon-navicon"></a>
+            <a href="javascript:void(0)" class="icon icon-search"></a>
+
+            <nav class="navigationSection pull-right">
+                <ul>
+                    <li><a asp-area="" asp-page="/Index">Category</a></li>
+                    <li>
+                        <a href="javascript:void(0)" title="About">About  <span class="icon-caret-down"></span></a>
+                        <ul class="subnavigation">
+                            <li><a asp-area="" asp-page="/Aboutus" title="About Us (IL&D Online)">About Us (IL&D Online)</a></li>
+                            <li><a asp-area="" asp-page="/Aboutus#Whatoffers" title="What IL&D Online offers?">What IL&D Online offers?</a></li>
+                            <li><a asp-area="" asp-page="/Aboutus#ourTeam" title="Our Team">Our Team </a></li>
+                            <li>
+                                <a href="javascript:void(0)" title="About IL&D ">About IL&D <span class="icon-caret-down"></span></a>
+                                <ul class="subnavigation">
+                                    <li><a asp-area="" asp-page="/Aboutus"  title="What IL&D Do?">What IL&D Do?</a></li>
+                                    <li><a asp-area="" asp-page="/Aboutus"  title="Why IL&D">Why IL&D</a></li>
+                                    <li><a asp-area="" asp-page="/Aboutus"  title="Our offerings ">Our offerings </a></li>
+                                    <li><a asp-area="" asp-page="/Aboutus"  title="Our Clients">Our Clients</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    </li>
+                    <li><a href="javascript:void(0)" title="Contact" data-taget="#contactSection">Connect</a></li>
+                </ul>
+            </nav>
+            <div class="searchBox pull-right dropdown">
+                @*<partial name="~/Pages/_SearchPMT.cshtml" />*@
+                @*<form asp-page="/Index" method="post">
+                        <input id="productName" type="search"
+                               placeholder="Search" aria-label="Search" class="src-box-input" name="SearchString" />
+                        <button type="submit" class="src-link-button"><i class="fas fa-search"></i></button>
+                    </form>*@
+                <form asp-page="./Programs/IndexSearch" method="get">
+                    @*<div class="form-inline my-2 my-lg-0 ml-auto">
+                            <input id="productName" class="form-control mr-sm-2" type="search"
+                                   placeholder="Search" aria-label="Search" name="SearchString" value="@Model.CurrentFilter" />
+                            <input type="submit" value="Search" class="btn btn-outline-success my-2 my-sm-0" />
+                        </div>*@
+
+                    <input type="text" id="productName" placeholder="Search" name="SearchString" class="form-control mr-sm-2" value="@Model.CurrentFilter">
+                    <button type="submit" value="Search" class="searchbtn">
+                        <span class="icon-search"></span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </header>
+
+    <div>
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+
+    @*<partial name="~/Pages/Shared/_Footer.cshtml" />*@
+
+<footer id="ConnectSection">
+    <div class="wrapper clearfix">
+        <h3 class="text-center">Get in touch</h3>
+        <div class="socialSection pull-left">            
+            <address>
+                VDSDC centre, Center of Excellence Building, <br> Phase -4, Vatva GIDC,<br> Ahmedabad - 382445
+            </address>
+
+        </div>
+        <div class=" pull-right">
+            <ul class="socialList clearfix">
+                <li><a href="mailTo:info@dhanakshiacademy.com" title="info@dhanakshiacademy.com"><span class="icon icon-envelope"></span></a></li>
+                <li><a href="https://www.linkedin.com/company/14612806/" title="Impactful Learning & Development Solutions" target="_blank"><span class="icon icon-linkedin"></span></a></li>
+                <li><a href="https://www.linkedin.com/company/14612806/" title="Twitter" target="_blank"><span class="icon icon-twitter"></span></a></li>
+                <li><a href="https://www.linkedin.com/company/14612806/" title="Facebook" target="_blank"><span class="icon icon-facebook"></span></a></li>
+            </ul>
+            <address class="text-right">
+                <a href="tel:+918080205500" class="telNumber"> +91 8080205500</a>
+            </address>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
+@section scripts{
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

@@ -1,0 +1,41 @@
+﻿@page
+@model PMTRazor.Pages.IndexModel
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+
+@*<meta name="viewport" content="width=device-width" />
+    <title>Index</title>*@
+
+@*<script type="text/javascript">
+    $(document).ready(function () {
+        //debugger;
+            $('#productName').autocomplete({
+                    source: '@Url.Page("_searchpmt", "Search")',
+                select: function (event, ui) {
+                    if (ui.item) {
+                        $("#SubLevelSearchID").val(ui.item.value);
+                        //$("#formtest").submit();
+                    }
+                        //set tagids to save
+                        //$("#SubLevelSearchID").val(ui.item.id);
+
+                        ////Tags for display
+                        //this.value = ui.item.value;
+                        //return false;
+                    }
+                });
+            });
+</script>*@
+
+
+<form id="formtest">
+    <input type="text" id="productName" placeholder="Search" class="form-control">
+    <button type="submit" value="OnSearchTest" class="searchbtn">
+        <span class="icon-search"></span>
+    </button>
+    
+</form>
+

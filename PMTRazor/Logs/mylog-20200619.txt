@@ -1,0 +1,6 @@
+2020-06-19T21:41:59.8242406+05:30  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2020-06-19T21:41:59.8675199+05:30  [INF] Hosting environment: "Development" (c3307c92)
+2020-06-19T21:41:59.8678372+05:30  [INF] Content root path: "C:\Projects\PMT\PMTRazor" (b5d60022)
+2020-06-19T21:43:05.3644280+05:30  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2020-06-19T21:43:05.3754445+05:30  [INF] Hosting environment: "Development" (c3307c92)
+2020-06-19T21:43:05.3757198+05:30  [INF] Content root path: "C:\Projects\PMT\PMTRazor" (b5d60022)

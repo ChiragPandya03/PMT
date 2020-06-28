@@ -1,0 +1,174 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../fonts/icomoon.eot?k3oni1');
+  src:  url('../fonts/icomoon.eot?k3oni1#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?k3oni1') format('truetype'),
+    url('../fonts/icomoon.woff?k3oni1') format('woff'),
+    url('../fonts/icomoon.svg?k3oni1#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon:before{vertical-align:-2px;}
+
+.icon-PresentationSkills .path1:before {
+  content: "\e903";
+  color: #00b0f0
+}
+.icon-PresentationSkills .path2:before {
+  content: "\e904";
+  margin-left: -1em;
+  color:#00b0f0
+}
+.icon-PresentationSkills .path3:before {
+  content: "\e905";
+  margin-left: -1em;
+  color: #00b0f0
+}
+.icon-PresentationSkills .path4:before {
+  content: "\e906";
+  margin-left: -1em;
+  color: rgb(1, 1, 1);
+}
+.icon-PresentationSkills .path5:before {
+  content: "\e907";
+  margin-left: -1em;
+  color: rgb(1, 1, 1);
+}
+.icon-PresentationSkills .path6:before {
+  content: "\e908";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-PresentationSkills .path7:before {
+  content: "\e909";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-PresentationSkills .path8:before {
+  content: "\e90a";
+  margin-left: -1em;
+  color: #00b0f0;
+}
+.icon-PresentationSkills .path9:before {
+  content: "\e90b";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-PresentationSkills .path10:before {
+  content: "\e90c";
+  margin-left: -1em;
+  color: #00b0f0;
+}
+.icon-PresentationSkills .path11:before {
+  content: "\e90d";
+  margin-left: -1em;
+  color: #00b0f0;
+}
+.icon-PresentationSkills .path12:before {
+  content: "\e90e";
+  margin-left: -1em;
+  color: #00b0f0;
+}
+.icon-PresentationSkills .path13:before {
+  content: "\e90f";
+  margin-left: -1em;
+  color: #00b0f0;
+}
+.icon-PresentationSkills .path14:before {
+  content: "\e910";
+  margin-left: -1em;
+  color: #00b0f0;
+}
+.icon-PresentationSkills .path15:before {
+  content: "\e911";
+  margin-left: -1em;
+  color: #00b0f0;
+}
+.icon-salesmanagement:before {
+  content: "\e901";
+}
+.icon-campus-corporate:before {
+  content: "\e900";
+}
+.icon-comm_icon:before {
+  content: "\e902";
+}
+.icon-search:before {
+  content: "\f002";
+}
+.icon-mail:before {
+  content: "\f003";
+}
+.icon-user:before {
+  content: "\f007";
+}
+.icon-cog:before {
+  content: "\f013";
+}
+.icon-chevron-right:before {
+  content: "\f054";
+}
+.icon-twitter:before {
+  content: "\f099";
+}
+.icon-facebook:before {
+  content: "\f09a";
+}
+.icon-navicon:before {
+  content: "\f0c9";
+}
+.icon-caret-down:before {
+  content: "\f0d7";
+}
+.icon-envelope:before {
+  content: "\f0e0";
+}
+.icon-linkedin:before {
+  content: "\f0e1";
+}
+.icon-circle-o:before {
+  content: "\f10c";
+}
+.icon-circle:before {
+  content: "\f111";
+}
+.icon-chevron-circle-up:before {
+  content: "\f139";
+}
+.icon-program:before {
+  content: "\e922";
+}
+.icon-clock:before {
+  content: "\e94e";
+}
+.icon-user-tie:before {
+  content: "\e976";
+}
+.icon-cogs:before {
+  content: "\e995";
+}
+.icon-earth:before {
+  content: "\e9ca";
+}
+.icon-circle-right:before {
+  content: "\ea42";
+}
+.icon-ManagerialEffectiveness:before {
+    content: "\e912";
+}

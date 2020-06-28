@@ -1,0 +1,154 @@
+﻿@page
+@model PMTRazor.Pages.TrainerDetails.IndexModel
+@{
+    ViewData["Title"] = "Trainer";
+}
+
+
+    <section class="profilePage">
+        <div class="courseSection sectionarea" id="courseSection">
+            <div class="wrapper">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="profileSummarySectin">
+                            <div class="clearfix">
+                                <div class="profileAvtar pull-left">
+
+                                    @if (!string.IsNullOrEmpty(Model.TrainerDetail.TrainerName))
+                                    {
+                                        var imageName = Model.TrainerDetail.TrainerName.Trim() + ".jpg";
+                                        <img class="media-object" src="../TrainerPhotos/@imageName" width="150" height="150" />
+                                    }
+                                    else
+                                    {
+                                        <img class="media-object" src="../img/useravtar.png" alt="..." align="middle" width="150" height="150">
+                                    }
+                                </div>
+                                <h1>@Model.TrainerDetail.TrainerName  <a href="@Model.TrainerDetail.LinkedinProfile" title="Profile name" target="_blank"><span class="icon icon-linkedin"></span></a></h1>
+                                <h5>@Model.TrainerDetail.TagLine </h5>
+                                <p><strong>Location: @Model.TrainerDetail.Location </strong></p>
+                                <p><strong>Total experience – @Model.TrainerDetail.TotalExperiance  years</strong></p>
+                                <p><strong>Training experience – @Model.TrainerDetail.TrainingExperiance Years</strong></p>
+                            </div>
+                            <p class="profileSummary">@Model.TrainerDetail.Description</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-5 col-md-4">
+                        <div class="profileLeftSection">
+                            <div class="profileWorkList">
+                                <h4>Key Organizations</h4>
+                                <ul class="list-unstyled">
+                                    @if (!string.IsNullOrEmpty(Model.TrainerDetail.KeyCompaniesWorkedFor))
+                                    {
+                                        @foreach (var trainer in Model.TrainerDetail.KeyCompaniesWorkedFor.Split(';'))
+                                        {
+                                            <li><span class="icon icon-circle"></span> @trainer</li>
+                                        }
+                                    }
+                                </ul>
+                            </div>
+                            <div class="profileWorkList">
+                                <h4>Area of Expertise</h4>
+                                <ul class="list-unstyled">
+                                    @if (!string.IsNullOrEmpty(Model.TrainerDetail.AreaofExpertise))
+                                    {
+                                        @foreach (var areaofExpertise in Model.TrainerDetail.AreaofExpertise.Split(';'))
+                                        {
+                                            <li><span class="icon icon-circle"></span> @areaofExpertise</li>
+                                        }
+                                    }
+                                </ul>
+                            </div>
+                            <div class="profileWorkList">
+                                <h4>Key industries</h4>
+                                <ul class="list-unstyled">
+                                    @if (!string.IsNullOrEmpty(Model.TrainerDetail.KeyIndustriesWorkedFor))
+                                    {
+                                        @foreach (var keyIndustriesWorkedFor in Model.TrainerDetail.KeyIndustriesWorkedFor.Split(';'))
+                                        {
+                                            <li><span class="icon icon-circle"></span> @keyIndustriesWorkedFor</li>
+                                        }
+                                    }
+
+                                </ul>
+                            </div>
+                            @*<div class="profileWorkList">
+                                <h4>Experience</h4>
+                                <ul class="list-unstyled">
+                                    <li><strong>Total – @Model.TrainerDetail.TotalExperiance  years</strong></li>
+                                    <li><strong>Training – @Model.TrainerDetail.TrainingExperiance Years</strong> </li>
+                                </ul>
+                            </div>*@
+                        </div>
+                    </div>
+                    <div class="col-sm-7 col-md-8">
+                        <div class="profileRightSection">
+                            <div class="profileWorkList">
+                                <h4>Education & Certifications</h4>
+                                <ul class="list-unstyled">
+                                    @if (!string.IsNullOrEmpty(Model.TrainerDetail.HighestEducationQualification))
+                                    {
+                                        @foreach (var highestEducationQualification in Model.TrainerDetail.HighestEducationQualification.Split(';'))
+                                        {
+                                            <li>
+                                                <span class="icon icon-circle"></span> @highestEducationQualification.
+                                            </li>
+                                        }
+                                    }
+                                </ul>
+                            </div>
+                            <div class="profileWorkList">
+                                <h4>
+                                    Achievements
+                                </h4>
+                                <ul class="list-unstyled">
+                                    @if (!string.IsNullOrEmpty(Model.TrainerDetail.MajorAchievement))
+                                    {
+                                        @foreach (var majorAchievement in Model.TrainerDetail.MajorAchievement.Split(';'))
+                                        {
+                                            <li>
+                                                <span class="icon icon-circle"></span> @majorAchievement
+                                            </li>
+                                        }
+                                    }
+                                </ul>
+                            </div>
+                            <div class="profileWorkList">
+                                <h4>
+                                    Major program
+                                </h4>
+                                <ul class="list-unstyled">
+                                    @if (!string.IsNullOrEmpty(Model.TrainerDetail.MajorProjects))
+                                    {
+                                        @foreach (var majorProjects in Model.TrainerDetail.MajorProjects.Split(';'))
+                                        {
+                                            <li>
+                                                <span class="icon icon-circle"></span> @majorProjects
+                                            </li>
+                                        }
+                                    }
+                                </ul>
+                            </div>
+                            <div class="profileWorkList">
+                                <h4>
+                                    Level of Employees
+                                </h4>
+                                <ul class="list-unstyled">
+                                    @if (!string.IsNullOrEmpty(Model.TrainerDetail.LevelOfEmployeesConducted))
+                                    {
+                                        @foreach (var levelOfEmployeesConducted in Model.TrainerDetail.LevelOfEmployeesConducted.Split(';'))
+                                        {
+                                            <li>
+                                                <span class="icon icon-circle"></span> @levelOfEmployeesConducted
+                                            </li>
+                                        }
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>

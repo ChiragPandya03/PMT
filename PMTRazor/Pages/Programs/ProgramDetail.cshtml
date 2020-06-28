@@ -1,0 +1,184 @@
+﻿@page
+@model PMTRazor.ProgramDetailModel
+@{
+    ViewData["Title"] = "Program";
+}
+
+
+<section class="courseDetailPage">
+    <div class="mainBanner" id="homeSection">
+        <div class="wrapper">
+            <div class="courseOverview clearfix">
+                <div class="col-md-9 col-sm-8">
+                    <h1>@Model.SubProgramLevel.SubProgramLevelName</h1>
+                    @*@if (Model.SubProgramLevel.SubProgramLevelName.Trim() == Model.SubProgramName.Trim())
+                        {
+                            <h1>@Html.DisplayFor(s => Model.SubProgramName)</h1>
+                        }
+                        else
+                        {
+                            <h1>@Model.SubProgramLevel.SubProgramLevelName</h1>
+                        }*@
+
+                    <h6><p>@Html.DisplayFor(s => Model.SubLevelDescription)</p></h6>
+
+                </div>
+                <div class="col-md-3 col-sm-4">
+                    <div class="courseInfoIconsection pull-right">
+                        <div>
+                            <span class="icon icon-clock"><span class="iconText"> @Model.SubProgramLevel.TotalHours Hour</span></span>
+                        </div>
+                        <div>
+                            <span class="icon icon-user-tie text-right"><span class="iconText"> @Model.TotalTrainerCount Trainer(s)</span></span>
+                        </div>
+                        <div class="clearfix">
+                            @*<span class="icon icon-earth pull-left"></span>*@
+                            @*<div class="dropdown pull-left ">
+                                    <button class="btn btn-default dropdown-toggle filterBtn" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        Filter Language
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                        <li><a href="#">English</a></li>
+                                        <li><a href="#">Hindi</a></li>
+                                        <li><a href="#">Option 3</a></li>
+                                        <li><a href="#">Option 4</a></li>
+                                    </ul>
+                                </div>*@
+                        </div>
+                    </div>
+                    @*<form method="post" asp-action="SendMail">*@
+                    <a class="inquiryBtn pull-right" data-toggle="modal" data-target="#SendInquiry"><span class="icon icon-mail"></span> Send Inquiry</a>
+                    @*</form>*@
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sectionarea sectionUp" id="courseSection">
+        <div class="wrapper">
+            <div class="row">
+                <div class="col-sm-7 col-md-8">
+                    <div class="courseDetailBox whiteBgBox">
+                        <div class="courseDetailSummary">
+
+                            <h3>Benefits</h3>
+                            <ul class="list-unstyled courseDetailPoints">
+                                @if (!string.IsNullOrEmpty(Model.SubProgramLevel.Benefits))
+                                    {
+                                        //string[] numbers = System.Text.RegularExpressions.Regex.Split(Model.SubProgramLevel.Benefits, @"\D+");
+                                @foreach (var benefit in Model.SubProgramLevel.Benefits.Split(';'))
+                                        {
+                                <li><span class="icon icon-circle-right"></span> @Html.DisplayFor(s => benefit)</li>
+                                        }
+                                    }
+
+                            </ul>
+                            <h3>Program Objectives</h3>
+                            <ul class="list-unstyled courseDetailPoints">
+                                @if (!string.IsNullOrEmpty(Model.SubProgramLevel.ProgramObjectives))
+                                    {
+                                @foreach (var objectives in Model.SubProgramLevel.ProgramObjectives.Split(';'))
+                                        {
+                                <li><span class="icon icon-circle"></span> @Html.DisplayFor(s => objectives)</li>
+                                        }
+                                    }
+
+                            </ul>
+                            <h3>Course Content</h3>
+                            <ul class="list-unstyled courseDetailPoints">
+                                @if (!string.IsNullOrEmpty(Model.SubProgramLevel.CourseContent))
+                                    {
+                                @foreach (var courseContent in Model.SubProgramLevel.CourseContent.Split(';'))
+                                        {
+                                <li><span class="icon icon-circle"></span> @Html.DisplayFor(s => courseContent)</li>
+                                        }
+                                    }
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-5 col-md-4">
+                    <div class="courseDetailBox whiteBgBox">
+                        <h2 class="text-center">Trainer</h2>
+                        <br />
+                        <div class="InstructorList">
+                            @if (Model.TrainerDetails != null)
+                                {
+                            @foreach (var trainer in Model.TrainerDetails)
+                                    {
+                                        var imageName = trainer.TrainerName + ".jpg";
+                            <div class="media">
+                                <div class="media-left">
+                                    <a href="#">
+                                        @if (!string.IsNullOrEmpty(imageName))
+                                                    {
+
+                                        @*<img class="media-object" src="data:image;base64,@Convert.ToBase64String(trainer.Photo)" width="56" height="56" />*@
+                                        <img class="media-object" src="../TrainerPhotos/@imageName" width="56" height="56" />
+                                                    }
+                                                    else
+                                                    {
+                                        <img class="media-object" src="../img/useravtar.png" alt="..." width="56" height="56">
+                                                    }
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <a class="media-heading" asp-page="/TrainerDetails/Index" asp-route-id="@trainer.TrainerId">@Html.DisplayFor(s => trainer.TrainerName)</a>
+                                    <p>@Html.DisplayFor(p => trainer.TagLine)</p>
+                                </div>
+                            </div>
+                                    }
+                                }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade inquiryForm" id="SendInquiry" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Let's work together</h4>
+
+                </div>
+                <form method="post">
+                    <input type="hidden" name="SubLevelProgramId" value="@Model.SubProgramLevel.SubProgramLevelID" />
+                    @*<input type="email" name="UserEmail">
+                        <input type="text" name="UserName">
+                        <input type="text" name="SubjectName" value="@Model.SubProgramLevel.SubProgramLevelName">
+                        <input type="text" name="MessageBody">*@
+
+                    <div class="modal-body">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group namefield">
+                            @*<input type="text" class="form-control" placeholder="Name">*@
+                            <input type="text" class="form-control" asp-for="UserName" placeholder="Name">
+                            <span asp-validation-for="UserName"></span>
+                        </div>
+                        <div class="form-group emailfield">
+                            <input type="email" class="form-control" name="UserEmail" placeholder="Email">
+                        </div>
+                        <div class="form-group clearfix">
+                            <input type="text" class="form-control" name="SubjectName" value="@Model.SubProgramLevel.SubProgramLevelName">
+                        </div>
+                        <div class="form-group">
+                            <textarea rows="6" class="form-control" name="MessageBody" placeholder="Message"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn clearbtn" data-dismiss="modal">Clear</button>
+                        @*<button type="submit" class="btn submitbtn" asp-area="" asp-route-id="@Model.SubProgramLevel.SubProgramLevelID" asp-route-sendInquiry="True">Submit</button>*@
+                        <input type="submit" class="btn submitbtn">
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,88 @@
+﻿@page
+@model PMTRazor.Pages.Programs.IndexSearchModel
+@{
+    ViewData["Title"] = "IndexSearch";
+}
+
+
+    <section>
+        <div class="mainBanner sectionarea" id="homeSection">
+            <!--<img src="img/mainbanner.jpg" alt="banner">-->
+            <div class="wrapper">
+                <div class="courseOverview">
+                    <h1>@Html.DisplayFor(s => Model.ProgramName)</h1>
+                    <h5>@Html.DisplayFor(s => Model.ProgramDescription)</h5>
+                </div>
+
+            </div>
+        </div>
+        <div class="sectionarea" id="courseSection">
+            <form method="post">
+                <div class="wrapper">
+                    <div class="courseThumbListWrapper sectionUp">
+                        <ul class="courseThumbList list-unstyled">
+
+                            @if (Model.SubPrograms != null && Model.SubPrograms.Any())
+                            {
+                                @foreach (var item in Model.SubPrograms)
+                                {
+                                    var imageName = item.ImageName.Trim();
+                                    <li>
+                                        <div class="courseThum">
+                                            <a href="#">
+                                                <img class="media-object" src="../TopicImages/@imageName" width="56" height="56" />
+                                            </a>
+                                        </div>
+                                        <div class="courseListDetails">
+                                            @if (Model.SubProgramLevels.Count(s => s.SubProgramId == item.SubProgramId) > 1)
+                                            {
+                                                <a class="courseThumbListTitle">
+                                                    @Html.DisplayFor(m => item.SubProgramName)
+                                                    <br />
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                <a class="courseThumbListTitle" asp-area="" asp-page="/Programs/ProgramDetail" asp-route-id="@Model.SubProgramLevels.FirstOrDefault(s=>s.SubProgramId==item.SubProgramId).SubProgramLevelID">
+                                                    @Html.DisplayFor(m => item.SubProgramName)
+                                                </a>
+                                            }
+                                            <div class="courseSummary">
+                                                @Html.DisplayFor(m => item.Description)
+
+                                                <ul class="courseSubList list-unstyled">
+                                                    @if (Model.SubProgramLevels.Count(s => s.SubProgramId == item.SubProgramId) > 1)
+                                                    {
+                                                        @foreach (var subLevel in Model.SubProgramLevels.Where(s => s.SubProgramId == item.SubProgramId))
+                                                        {
+                                                            <li>
+                                                                <span class="icon icon-circle-right"></span>
+                                                                <a class="courseThumbListTitle" asp-area="" asp-page="/Programs/ProgramDetail" asp-route-id="@subLevel.SubProgramLevelID">
+                                                                    @Html.DisplayFor(m => subLevel.SubProgramLevelName) (@Html.DisplayFor(m => subLevel.TotalHours) hours)
+                                                                </a>
+                                                            </li>
+                                                        }
+                                                    }
+                                                </ul>
+                                            </div>
+
+
+
+                                            <div class="courseInfoIconsection">
+                                                <div class="icon icon-user-tie pull-right" data-toggle="tooltip" title="Trainers"><span class="iconText"> @Html.DisplayFor(s => item.TotalTrainerCount) </span></div>
+                                                <div class="icon icon-program pull-left" data-toggle="tooltip" title="Programs"><span class="iconText"> @Html.DisplayFor(m => item.TotalProgramCount)</span></div>
+                                                <div class="icon icon-earth text-center" data-toggle="tooltip" title="Languages"><span class="iconText"> @Html.DisplayFor(s => item.TotalLanguageCount) </span></div>
+
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                }
+                            }
+
+                        </ul>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
